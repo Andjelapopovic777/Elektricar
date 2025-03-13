@@ -1,0 +1,584 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Sprečava horizontalno skrolovanje */
+html, body {
+    overflow-x: hidden;
+    width: 100%; /* Osigurava da stranica zauzima celu širinu ekrana */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    /*background-color: #f1f0f0;*/
+    background-color: #eaeaea;
+}
+
+.navbar {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background: #eaeaea;
+    padding: 15px 20px;
+    height: 80px;
+    padding-right: 20px;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+
+}
+
+
+.logo {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    
+}
+.nav-links {
+    position: fixed;
+    top: 0;
+    right: -50%; /* Sakriven izvan ekrana */
+    width: 50%; /* Polovina ekrana */
+    height: 100vh;
+    background: #eaeaea; /* Plava pozadina, promeni ako želiš */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.3s ease-in-out;
+}
+
+.nav-links.active {
+    right: 0; /* Prikazuje meni */
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color:#045a9f;
+    font-size: 1.2em;
+}
+
+.nav-links a:hover {
+    color: #f2d839;
+}
+
+.navbar .logo img {
+    height: 120px; 
+    width: auto;
+    padding-top: 10px;
+    padding-left: 20px;
+  }
+
+/* Stilizacija hamburger menija */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+
+.hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.nav-links.active a {
+    color: #045a9f; /* Možeš promeniti boju ako želiš */
+    text-decoration: none;
+    background-color: #eaeaea;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+}
+
+/* Prikazuje hamburger dugme ispod 700px */
+@media screen and (max-width: 700px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #eaeaea;
+        width: 100%;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        right: -50%; /* Sakriveno izvan ekrana */
+        width: 50%; /* Samo desna polovina ekrana */
+        height: 38vh;
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease-in-out;
+    }
+
+    .nav-links li {
+        padding: 10px;
+        
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links.active {
+        display: flex;
+        right: 0; /* Prikazuje meni */
+    }
+}
+
+
+.hero {
+    width: 100%;
+    height: 600px;
+    background: url('pozadina2.png') no-repeat center center/cover;
+    position: relative;
+    text-align: center;
+    padding: 20px;
+ 
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Tamni sloj - podešavaj jačinu */
+    z-index: 1; /* Održava sloj ispod teksta */
+}
+
+
+
+.naslov{
+    margin-top: 60px;
+    padding-top: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    z-index: 2;
+    padding: 20px 30px;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Providnost slike */
+}
+
+.naslov-prvi {
+    font-size: 30pt;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
+
+.naslov-drugi {
+    font-size: 80pt;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+}
+
+.call-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    
+    font-size: 1.9em;
+    color: white;
+    background: #f2d839;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none; /* Uklanja podvlačenje */
+    display: inline-block; /* Omogućava stilizaciju kao dugme */
+}
+
+.call-button:hover {
+    background: #ffffff;
+    color: #f2d839;
+}
+
+/* Kontejner za kartice */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+/* Stilizacija svake kartice */
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 30%; /* 3 kartice u jednom redu */
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card .icon {
+    font-size: 40px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 29px;
+    color: #045a9f;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 20px;
+    color: #555;
+}
+
+.galerija {
+   
+    padding: 10px; /* Dodajemo padding oko galerije */
+    gap: 5px; /* Razmak između slika */
+    align-items: center;
+}
+
+
+
+/* Stilizacija slika u galeriji */
+.galerija img {
+    border-radius: 15px;
+    padding: 8px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgb(124, 124, 124);
+    align-items: center;
+  
+}
+
+.galerija img:hover {
+    transform: scale(1.3);
+}
+
+.emoji-line {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+.moving-line-container {
+    width: 100%; /* Širina ekrana */
+    overflow: hidden; /* Sakriva deo koji izlazi */
+    white-space: nowrap; /* Sprečava prelamanje u novi red */
+    background-color: transparent; /* Pozadina po želji */
+    padding: 10px 0;
+    padding-top: 30px;
+}
+
+.moving-line {
+    display: inline-block;
+    font-size: 30px; /* Veličina emodžija */
+    animation: moveLoop 30s linear infinite; /* Animacija kretanja */
+}
+
+@keyframes moveLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+.futer {
+    width: 100%;
+    height: 400px;
+    background: url('top.jpg') no-repeat center center/cover;
+    position: relative;
+    text-align: center;
+    margin-top: 100px;
+    
+}
+.futer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Tamni sloj - podešavaj jačinu */
+    z-index: 1; /* Održava sloj ispod teksta */
+}
+
+.futer::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Providnost slike */
+}
+
+
+
+/* Stilovi za desktop */
+.box, .box1 {
+    flex: 1;
+}
+
+.box-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    flex-wrap: wrap;
+    bottom: 50%;
+    left: 0;
+    padding-top: 100px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.box1 {
+    display: flex;
+    flex-wrap: wrap;
+    height: 200px;
+    margin: 0 10px;
+    box-shadow: 0 4px 6px rgb(53, 53, 53);
+    text-align:center;
+    color: #ffffff;
+    font-size: 20pt;
+    text-align: center;
+    width: 30%;  /* Podesite širinu za desktop */
+    padding: 20px;
+    border-radius: 20px;
+    flex-direction: column;
+    justify-content: center; /* Centriranje vertikalno */
+    align-items: center; /* Centriranje horizontalno */
+ 
+}
+
+.kontakt{
+    font-size: 40pt;
+    font-family: Cambria, Cochin, Georgia, Times;
+   color:  #f2d839;
+}
+
+
+
+
+
+
+.emoji-line {
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-size: 30px;
+}
+
+.moving-line-container {
+    width: 100%; /* Širina ekrana */
+    overflow: hidden; /* Sakriva deo koji izlazi */
+    white-space: nowrap; /* Sprečava prelamanje u novi red */
+    background-color: transparent; /* Pozadina po želji */
+    padding: 10px 0;
+    padding-top: 30px;
+}
+
+.moving-line {
+    display: inline-block;
+    font-size: 30px; /* Veličina emodžija */
+    animation: moveLoop 30s linear infinite; /* Animacija kretanja */
+}
+
+@keyframes moveLoop {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+
+
+@media (max-width: 660px) {
+    .naslov-prvi {
+        font-size: 30pt; /* Manja veličina fonta za manje ekrane */
+    }
+
+    .naslov-drugi {
+        font-size: 50pt; /* Manja veličina fonta za manje ekrane */
+    }
+}
+
+@media (max-width: 422px) {
+    .naslov-prvi {
+        font-size: 20pt; /* Manja veličina fonta za manje ekrane */
+    }
+
+    .naslov-drugi {
+        font-size: 40pt; /* Manja veličina fonta za manje ekrane */
+    }
+}
+
+@media (max-width: 320px) {
+    .naslov-prvi {
+        font-size: 17pt; /* Manja veličina fonta za manje ekrane */
+    }
+
+    .naslov-drugi {
+        font-size: 37pt; /* Manja veličina fonta za manje ekrane */
+    }
+}
+
+/* Prilagodba za manje ekrane */
+@media (max-width: 768px) {
+    .card {
+        width: 45%; /* 2 kartice u jednom redu */
+    }
+    #usluge {
+        padding-left: 15px;
+        padding-right: 15px;
+}
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%; /* 1 kartica u jednom redu */
+    }
+    #usluge {
+        padding-left: 15px;
+        padding-right: 15px;
+}
+
+
+
+
+
+
+
+/* Prilagodba za ekrane sa širinom 2560px */
+@media (max-width: 2560px) {
+    .galerija img {
+        width: 23%; /* Četiri slike u jednom redu */
+        
+    }
+}
+
+/* Prilagodba za tablet uređaje sa širinom 1440px (ili manji ekrani) */
+@media (max-width: 1440px) {
+    .galerija img {
+        width: 32%; /* Tri slike u jednom redu */
+       
+    }
+}
+
+/* Prilagodba za tablet uređaje */
+@media (max-width: 1024px) {
+    .galerija img {
+        width: 48%; /* Dve slike u jednom redu sa manjim razmakom */
+       
+    }
+}
+
+/* Prilagodba za manji tablet ili mobilne uređaje */
+@media (max-width: 768px) {
+    .galerija img {
+        width: 100%; /* Jedna slika u redu na manjim ekranima */
+        
+        align-items: center;
+    }
+}
+/* Prilagodba za manji tablet ili mobilne uređaje */
+@media (max-width: 725px) {
+    .galerija img {
+        width: 100%; /* Jedna slika u redu na manjim ekranima */
+        
+        align-items: center;
+    }
+}
+
+
+/* Prilagodba za manji tablet ili mobilne uređaje */
+@media (max-width: 530px) {
+    .box1{
+       font-size: 15pt;
+    }
+    .kontakt{
+        font-size: 35pt;
+    }
+}
+
+@media (max-width: 415px) {
+   
+    .kontakt{
+        font-size: 30pt;
+    }
+}
+@media (max-width: 375px) {
+   
+    .kontakt{
+        font-size: 25pt;
+    }
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
