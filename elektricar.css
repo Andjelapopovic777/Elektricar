@@ -44,18 +44,58 @@ body {
     display: flex;
     
 }
+/* Osnovna stilizacija za veće ekrane (veće od 700px) */
 .nav-links {
-    position: fixed;
-    top: 0;
-    right: -50%; /* Sakriven izvan ekrana */
-    width: 50%; /* Polovina ekrana */
-    height: 100vh;
-    background: #eaeaea; /* Plava pozadina, promeni ako želiš */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: right 0.3s ease-in-out;
+    right: -100%;
+    flex-direction: row; /* Linkovi su u horizontalnom redu */
+    justify-content: flex-start; /* Linkovi su poravnati s levom stranom */
+    align-items: center; /* Poravnanje na sredinu po visini */
+    position: static; /* Uklanja fiksnu poziciju */
+    width: auto; /* Automatska širina */
+    height: auto; /* Visina menija na desktopu */
+    background: transparent; /* Bez pozadine na desktopu */
+    margin-right: 20px; /* Razmak s desne strane */
+}
+
+.nav-links li {
+    margin: 0 20px; /* Razmak između linkova */
+}
+
+/* Za mobilne uređaje (manje od 700px) */
+@media (max-width: 700px) {
+    .nav-links {
+        position: fixed; /* Fiksni meni */
+        top: 0;
+        right: -50%; /* Sakriva meni sa strane */
+        width: 50%; /* Polovina ekrana */
+        height: 100vh;
+        background: #eaeaea;
+        flex-direction: column; /* Meni je vertikalan */
+        align-items: center;
+        justify-content: center;
+        transition: right 0.3s ease-in-out; /* Animacija otvaranja */
+    }
+
+    .nav-links.active {
+        right: 0; /* Meni se pojavljuje kad je aktivan */
+    }
+
+    .hamburger {
+        display: block; /* Prikazuje hamburger meni */
+    }
+}
+
+/* Stilizacija za linkove */
+.nav-links a {
+    text-decoration: none;
+    color: #045a9f;
+    font-size: 1.2em;
+    
+}
+
+.nav-links a:hover {
+    color: #f2d839;
 }
 
 .nav-links.active {
@@ -63,7 +103,7 @@ body {
 }
 
 .nav-links li {
-    margin: 0 15px;
+    margin: 0 20px;
 }
 
 .nav-links a {
@@ -484,8 +524,8 @@ body {
         width: 45%; /* 2 kartice u jednom redu */
     }
     #usluge {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
 }
 }
 
@@ -494,8 +534,8 @@ body {
         width: 100%; /* 1 kartica u jednom redu */
     }
     #usluge {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 20px;
+        padding-right: 20px;
 }
 
 
